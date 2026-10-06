@@ -78,7 +78,7 @@ export function buildLoft(scene,{mobile=false,reduced=false}={}){
  for(let i=0;i<8;i++)book(-5.2,0.1,-.8+i*.2,.35,.35,.08);
  function shelves(x,z){box(.55,.07,1.8,x,1.15,z,wood);box(.55,.07,1.8,x,1.95,z,wood);box(.55,.07,1.8,x,2.75,z,wood);for(let dz of [-.88,.88])box(.06,2.85,.06,x+.2,1.42,z+dz,metal);for(let i=0;i<9;i++)book(x,1.99,z-.72+i*.17,.35,.25+rand()*.23,.1);for(let i=0;i<7;i++)book(x,1.19,z-.66+i*.19,.3,.24+rand()*.2,.12)}shelves(5.35,.1);
  function plant(x,z,size=1,y=0){let g=new T.Group();g.position.set(x,y,z);g.scale.setScalar(size);scene.add(g);cyl(.25,.18,.44,0,.22,0,terra,g);cyl(.23,.23,.025,0,.45,0,mat('#2f2430'),g);for(let i=0;i<9;i++){let a=i*2.4,h=.7+rand()*.9,r=.2+rand()*.35;rod([0,.4,0],[Math.cos(a)*r,h,Math.sin(a)*r],.014,mat('#3d6a54'),g);let leaf=sphere(.28,Math.cos(a)*r,h,Math.sin(a)*r,mat(i%2?'#348978':'#467850'),g);leaf.scale.set(.5,1.6,.16);leaf.rotation.set(.4,a,.55)}}
- for(let [x,z,s] of [[-4.8,-5.9,1.3],[4.8,-5.9,1.35],[-5,5.7,1.15],[5,5.7,1.2],[-4.8,10,1.6]])plant(x,z,s);
+ // Keep the exhibition walls clear of foliage.
  function stackedBooks(x,z){for(let i=0;i<6;i++){let b=box(.48,.07,.34,x,.06+i*.073,z,mat(['#c96572','#c5a770','#537c99'][i%3]));b.rotation.y=(rand()-.5)*.4}}stackedBooks(4.9,-5);stackedBooks(-4.75,5.1);
  function carton(x,z,s){box(s,s*.7,s,x,s*.35,z,mat('#a17959'));box(s,.012,.075,x,s*.7+.01,z,mat('#ccb088'));box(.2,.045,.012,x,s*.45,z+s/2+.01,metal)}carton(5.1,7,.65);carton(4.6,7.35,.55);carton(-4.8,7,.72);
  // Mezzanine studio, stairs and rear kitchen.
@@ -126,7 +126,7 @@ export function buildLoft(scene,{mobile=false,reduced=false}={}){
  plant(-5.25,12.2,1.05);plant(2.72,12.17,.85);plant(5.3,15.75,1.2);
  for(let x of [-4,2.4]){rod([x,3.56,12.5],[x,2.93,12.5],.012,gold);cyl(.16,.11,.22,x,2.83,12.5,terra);for(let i=0;i<6;i++){let z=12.5+Math.sin(i)*.15;rod([x,2.8,12.5],[x+Math.cos(i)*.24,2.25,z],.011,teal);let leaf=sphere(.11,x+Math.cos(i)*.24,2.34,z,teal);leaf.scale.set(.7,1.6,.3)}}
  // Storage along the side walls enriches the gallery without blocking artworks.
- for(let [x,z] of [[-5.32,6.3],[5.32,6.3]]){box(.64,.77,1.05,x,.39,z,wood);for(let y of [.25,.53]){box(.015,.025,.11,x>0?x-.33:x+.33,y,z,gold)}stackedBooks(x,z-.2);plant(x,z+.23,.4,.79)}
+ for(let [x,z] of [[-5.32,6.3],[5.32,6.3]]){box(.64,.77,1.05,x,.39,z,wood);for(let y of [.25,.53]){box(.015,.025,.11,x>0?x-.33:x+.33,y,z,gold)}stackedBooks(x,z-.2)}
  // A painted geometric textile rather than another exhibited artwork.
  for(let i=0;i<12;i++){let stripe=box(.16,.02,.5,-4.25+i*.17,.065,12.02,i%2?teal:orange);stripe.rotation.y=.4}
  light('#cb329c',26,-4,2.2,14,6);light('#25aace',25,4,2,13.5,6);
